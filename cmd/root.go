@@ -63,6 +63,9 @@ func Execute() {
 
 func loadMarks() ([]MarkData, error) {
 	path, _ := xdg.DataFile("fmark/commands.json")
+	if exists, err := afero.Exists(fs, path); err != nil || !exists {
+		afero.WriteFile(fs, path, []byte("[]"), 0644)
+	}
 	data, err := afero.ReadFile(fs, path)
 	if err != nil {
 		return nil, err
