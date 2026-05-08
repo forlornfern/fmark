@@ -86,7 +86,7 @@ func getBookmarkValidArgs(cmd *cobra.Command, args []string, toComplete string) 
 		}
 		var items []string
 		for _, mark := range jsonData {
-			items = append(items, mark.Name)
+			items = append(items, fmt.Sprintf("%s\t%q", mark.Name, mark.Value))
 		}
 		return items, cobra.ShellCompDirectiveNoFileComp
 	}
