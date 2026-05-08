@@ -49,7 +49,7 @@ var rootCmd = &cobra.Command{
 var fs = afero.NewOsFs()
 
 func init() {
-	rootCmd.PersistentFlags().Bool("verbose", false, "verbose log")
+	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "verbose log")
 }
 
 func Execute() {
